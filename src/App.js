@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+ 
 function App() {
+  const users = [
+    {
+      id: '01',
+      name: 'John Deo',
+      email: 'john@gmail.com',
+      phone: '202-555-0163'
+    },
+    {
+      id: '02',
+      name: 'Brad Pitt',
+      email: 'fightclud@gmail.com',
+      phone: '202-555-0106'
+    },
+  ];
+ 
+  const joinList = [users, users];
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <ul>
+            {joinList.map((nestedItem, i) => (
+              <ul key={i}>
+                <h3> List {i} </h3>
+                {nestedItem.map(data => (
+                  <li key={data.id}>
+                    <div>{data.id}</div>
+                    <div>{data.name}</div>
+                    <div>{data.email}</div>
+                    <div>{data.phone}</div>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </ul>       
     </div>
   );
 }
-
+ 
 export default App;
